@@ -5,16 +5,18 @@ import { AppComponent } from './app.component';
 import { OutputComponent } from './output/output.component';
 import { GroupComponent } from './output/group/group.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     OutputComponent,
     GroupComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

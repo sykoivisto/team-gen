@@ -1,5 +1,5 @@
-<form style="max-width: 500px">
-  <button type="button" class="btn btn-primary" (click)="onSubmit()">
+<form style="max-width: 500px" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <button type="submit" class="btn btn-primary">
     Shuffle
   </button>
   <div class="form-group">
@@ -9,18 +9,21 @@
       type="number"
       class="form-control"
       id="numberOfTeams"
-      value="2"
       #teams
+      name="teams"
+      ngModel
+      [ngModel]="teamsDefault"
     />
   </div>
   <div class="form-group">
     <label for="players">Players</label>
-    <textarea id="players" rows="10" class="form-control" #players>
-R0v3r
-CooloJenkins
-ZedAyEnDeeAreAy
-Blondeman
-ZJTom
-Tom_Bomb</textarea>
+    <textarea
+    id="players"
+    rows="10"
+    class="form-control"
+    #players
+    name="players"
+    ngModel
+    [ngModel]="playersDefault"></textarea>
   </div>
 </form>

@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { TeamService } from '../team.service';
 
 @Component({
@@ -8,21 +9,18 @@ import { TeamService } from '../team.service';
 })
 export class SettingsComponent implements OnInit {
 
-  @ViewChild('teams') teamsInputRef!: ElementRef;
-  @ViewChild('players') playersInputRef!: ElementRef;
+  teamsDefault = '2'
+  playersDefault = 'R0v3r\nCooloJenkins\nZedAyEnDeeAreAy\nBlondeman\nZJTom\nTom_Bomb'
 
   constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-
-    const teams = this.teamsInputRef.nativeElement.value;
-    const players = this.playersInputRef.nativeElement.value;
-
+  onSubmit(form: NgForm) {
+    const teams = form.value.teams;
+    const players = form.value.players
     this.teamService.submitSettings(teams, players);
-
   }
 
 }
