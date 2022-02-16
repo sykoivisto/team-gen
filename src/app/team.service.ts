@@ -1,32 +1,26 @@
 import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
-import { Group } from "./shared/group.model";
 
 @Injectable({providedIn: 'root'})
 
 export class TeamService {
 
-  private groups: Group[] = [
-    new Group(['R0v3r', 'CooloJenkins', 'ZedAyEnDeeAreAy']),
-    new Group(['Blondeman', 'ZJTom', 'Tom_Bomb']),
+  private groups: string[][] = [
+    ['R0v3r', 'CooloJenkins', 'ZedAyEnDeeAreAy'],
+    ['Blondeman', 'ZJTom', 'Tom_Bomb'],
   ];
 
-  groupsUpdated = new Subject<Group[]>();
+  groupsUpdated = new Subject<string[][]>();
 
   submitSettings(teams: number, players: string) {
 
-    let playersArr = players.split('\n');
+    let playersArr = players.split('\n'); // array of strings
 
     this.shuffle(playersArr);
 
-    let allGroups = this.splitArr(teams, playersArr);
+    let allGroups = this.splitArr(teams, playersArr); //array of arrays of strings
 
-    this.groups = [];
-
-    for (let i = 0; i < allGroups.length; i++) {
-      let newGroup = new Group(allGroups[i]);
-      this.groups.push(newGroup);
-    }
+    this.groups = allGroups;
 
     this.groupsUpdated.next(this.groups);
   }

@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Group } from '../shared/group.model';
 import { TeamService } from '../team.service';
 
 @Component({
@@ -11,9 +10,9 @@ import { TeamService } from '../team.service';
 export class OutputComponent implements OnInit, OnDestroy {
   private updateGroupsSubscription!: Subscription;
 
-  groups: Group[] = [
-    new Group(['R0v3r', 'CooloJenkins', 'ZedAyEnDeeAreAy']),
-    new Group(['Blondeman', 'ZJTom', 'Tom_Bomb']),
+  groups: string[][] = [
+    ['R0v3r', 'CooloJenkins', 'ZedAyEnDeeAreAy'],
+    ['Blondeman', 'ZJTom', 'Tom_Bomb'],
   ];
 
   constructor(private teamService: TeamService) {}
